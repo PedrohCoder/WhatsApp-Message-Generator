@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Gerador de Mensagens</title>
+  </head>
+  <body>
+    <section class="generator">
+      <h1>Gerador de Mensagens:</h1>
+      <input type="text" id="tel" placeholder="telefone:" class="textinp tel" />
+      <input type="button" value="abrir" onclick="openchat()" class="btn"/>
+      <br />
+      <div>
+        <input type="text" class="infos textinp" placeholder="nome:" />
+        <input type="date" class="infos textinp" placeholder="data:" />
+        <input type="text" class="infos textinp" placeholder="cpf:" />
+        <input
+          type="number"
+          class="infos textinp"
+          placeholder="dinheiro:"
+          step="0.01"
+        />
+        <input type="button" value="ir" onclick="setinfos()"  class="btn"/>
+        <div class="generator-itens">
+          <h2>Texto 1:</h2>
+          <input
+            class="btn"
+            type="button"
+            value="abrir"
+            onclick="
+        setinfos();
+        window.open( `https://web.whatsapp.com/send/?phone=%2B55${zap_numb.value}&text=${document.getElementById('text1').innerText}&type=phone_number&app_absent=0`,'_blank')
+        "
+          />
+          <input type="button" value="copiar" class="copiar btn" />
+          <p id="text1">
+            Lorem, ipsum dolor sit amet consectetur adipisicing *<span
+              class="name"
+              >Name</span
+            >* elit. Dicta harum tenetur alias!
+          </p>
+          <h2>Texto 2:</h2>
+          <input
+            type="button"
+            class="btn"
+            value="abrir"
+            onclick="
+        setinfos();
+        window.open( `https://web.whatsapp.com/send/?phone=%2B55${zap_numb.value}&text=${document.getElementById('text2').innerText}&type=phone_number&app_absent=0`,'_blank')
+        "
+          />
+          <input type="button" value="copiar" class="copiar btn" />
+          <p id="text2">
+            Lorem, ipsum dolor sit amet consectetur adipisicing *<span
+              class="data"
+              >Data</span
+            >* elit. Dicta harum tenetur alias!
+          </p>
+          <h2>Texto 3:</h2>
+          <input
+            type="button"
+            class="btn"
+            value="abrir"
+            onclick="
+        setinfos();
+        window.open( `https://web.whatsapp.com/send/?phone=%2B55${zap_numb.value}&text=${document.getElementById('text3').innerText}&type=phone_number&app_absent=0`,'_blank')
+        "
+          />
+          <input type="button" value="copiar" class="copiar btn" />
+          <p id="text3">
+            Lorem, ipsum dolor sit amet consectetur adipisicing *<span
+              class="cpf"
+              >Cpf</span
+            >* elit. Dicta harum tenetur alias!
+          </p>
+          <h2>Texto 4:</h2>
+          <input
+            class="btn"
+            type="button"
+            value="abrir"
+            onclick="
+        setinfos();
+        window.open( `https://web.whatsapp.com/send/?phone=%2B55${zap_numb.value}&text=${document.getElementById('text4').innerText}&type=phone_number&app_absent=0`,'_blank')
+        "
+          />
+          <input type="button" value="copiar" class="copiar btn" />
+          <p id="text4">
+            Lorem ipsum dolor sit amet consectetur adipisicing *<span
+              class="name"
+              >Name</span
+            >*. Aliquam officiis *<span class="money">Dinheiro</span>* et labore
+            at dicta excepturi in mollitia voluptatum nesciunt ratione ullam
+            *<span class="data">Data</span>* quis deserunt, placeat maiores
+            asperiores consectetur quas eaque sed. *<span class="cpf">Cpf</span
+            >* elit. Dicta harum tenetur alias!
+          </p>
+        </div>
+      </div>
+    </section>
+    <footer style="text-align: center; font-size: 20px; color: white; font-family: 'inter', 'sans-serif'; width: 50%; margin: auto; font-weight: 100; line-height: 30px;"><p>Desenvolvido por <br>Pedro Henrique dos Santos S.</p></footer>
+    <script>
+      const zap_numb = document.getElementById("tel");
+      function openchat() {
+        window.open(
+          `https://web.whatsapp.com/send/?phone=%2B55${zap_numb.value}&text&type=phone_number&app_absent=0`,
+          "_blank"
+        );
+      }
+
+      //#region Substituidor
+      const name_get = document.getElementsByClassName("infos");
+      const text1 = document.getElementsByClassName("name");
+      const text2 = document.getElementsByClassName("data");
+      const text3 = document.getElementsByClassName("cpf");
+      const text4 = document.getElementsByClassName("money");
+
+      function setinfos() {
+        text1[0].innerText = name_get[0].value;
+        text2[0].innerText = name_get[1].value;
+        text3[0].innerText = name_get[2].value;
+        let money_display = Number(name_get[3].value);
+        text4[0].innerText = money_display.toLocaleString("pt-br", {
+          style: "currency",
+          currency: "BRL",
+        });
+
+        text1[1].innerText = name_get[0].value;
+        text2[1].innerText = name_get[1].value;
+        text3[1].innerText = name_get[2].value;
+      }
+
+      const copiar1 = document.getElementsByClassName("copiar")[0];
+      copiar1.addEventListener("click", (clip1) => {
+        navigator.clipboard.writeText(
+          document.getElementsByTagName("p")[0].innerText
+        );
+      });
+      const copiar2 = document.getElementsByClassName("copiar")[1];
+      copiar2.addEventListener("click", (clip2) => {
+        navigator.clipboard.writeText(
+          document.getElementsByTagName("p")[1].innerText
+        );
+      });
+      const copiar3 = document.getElementsByClassName("copiar")[2];
+      copiar3.addEventListener("click", (clip3) => {
+        navigator.clipboard.writeText(
+          document.getElementsByTagName("p")[2].innerText
+        );
+      });
+      const copiar4 = document.getElementsByClassName("copiar")[3];
+      copiar4.addEventListener("click", (clip4) => {
+        navigator.clipboard.writeText(
+          document.getElementsByTagName("p")[3].innerText
+        );
+      });
+      //#endregion
+    </script>
+  </body>
+</html>
